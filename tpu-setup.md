@@ -134,6 +134,33 @@ jupyter lab --no-browser --port=8888 --ip=127.0.0.1
 
 Open the printed `http://127.0.0.1:8888/lab?token=...` URL in your laptop's browser.
 
+## Pushing changes back from the TPU VM
+
+The remote is HTTPS, so pushes need credentials. Setup:
+
+1. **Per-repo git identity** (avoid `--global` on a shared VM):
+   ```bash
+   git config user.name "borisbolliet"
+   git config user.email "boris.bolliet@gmail.com"
+   ```
+
+2. **GitHub personal access token** — create one at
+   <https://github.com/settings/tokens> with `repo` scope, then export it from
+   `~/.bashrc`:
+   ```bash
+   echo 'export GITHUB_TOKEN=ghp_xxx...' >> ~/.bashrc
+   ```
+   Most distros' default `~/.bashrc` returns early in non-interactive shells,
+   so `GITHUB_TOKEN` will only be visible in interactive sessions — fine for
+   manual pushes, but scripts will need to source it explicitly.
+
+3. **Push using an inline credential helper** so the token stays in the
+   environment and is never written to git config or `.git-credentials`:
+   ```bash
+   git -c credential.helper='!f() { echo username=borisbolliet; echo password=$GITHUB_TOKEN; }; f' \
+       push origin main
+   ```
+
 ## Delete when done
 
 ```bash
