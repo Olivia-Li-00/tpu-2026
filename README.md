@@ -15,14 +15,21 @@ anything. Just connect and work.
 
 1. **Install the Google Cloud CLI** (`gcloud`): https://cloud.google.com/sdk/docs/install
    - macOS: `brew install --cask google-cloud-sdk`
-2. **Log in with the Gmail you registered** (the one in the class group):
+2. **Log in with the Gmail you registered** (the one in the class group — **NOT
+   your `@cam.ac.uk` account**):
    ```bash
-   gcloud auth login
+   gcloud auth login          # pick your GMAIL in the browser
+   gcloud config set account <your-gmail>@gmail.com
    gcloud config set project tpu-2026
    ```
 
 That's it — no SSH keys to manage, no IPs to configure. Access is granted to your
-Gmail through the class Google Group.
+**Gmail** through the class Google Group.
+
+> ⚠️ The single most common error is being signed in with your **Cambridge**
+> account instead of your Gmail. If a command says it's `authenticated as
+> <crsid>@cam.ac.uk`, run `gcloud config set account <your-gmail>@gmail.com`
+> (or `gcloud auth login` and pick the Gmail). See **Troubleshooting** below.
 
 ---
 
@@ -123,6 +130,36 @@ The TPUs **auto-delete after 7 days**, and anything left only on the VM is gone
 when that happens. **Push your code to GitHub** (or copy results off the VM)
 regularly. See the "Pushing changes back from the TPU VM" section of
 [`tpu-setup.md`](tpu-setup.md) for the git-over-HTTPS + token recipe.
+
+---
+
+## Bonus: run Claude Code / Codex on the TPU
+
+Once you've SSH'd in, you can install and run coding agents (Claude Code, Codex,
+etc.) right on the VM and let them drive your TPU experiments. The VM has
+outbound internet via Cloud NAT, so the usual installers work.
+
+---
+
+## Troubleshooting
+
+**`PERMISSION_DENIED: Permission 'tpu.nodes.get' denied ... authenticated as
+<crsid>@cam.ac.uk`**
+You're signed in with your **Cambridge** account, which has no access. Switch to
+your Gmail:
+```bash
+gcloud auth login                                  # choose your GMAIL
+gcloud config set account <your-gmail>@gmail.com
+gcloud config list account                         # confirm it shows your gmail
+```
+
+**`PERMISSION_DENIED: Permission 'tpu.nodes.update' denied`**
+This means access is granted but hadn't fully propagated yet, or you're still on
+the wrong account. Confirm you're on your Gmail (above), wait ~2 minutes, and
+retry. If it persists, message the lab channel with your crsid + Gmail.
+
+**It hangs / "key propagating" on first connect**
+The first SSH can take ~30s while your key is pushed to the VM. That's normal.
 
 ---
 
