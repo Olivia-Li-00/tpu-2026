@@ -33,3 +33,14 @@ scripts/*.log
 .idea/
 *.swp
 .DS_Store
+
+# student roster / personal data — NEVER commit (privacy)
+*Form Responses*.csv
+members_template.csv
+members_upload.csv
+add_*.csv
+teams_roster.csv
+group_member_gmails.txt
+pending_gmails.txt
+Upload_*.log
+texput.log
