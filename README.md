@@ -28,17 +28,23 @@ Gmail through the class Google Group.
 
 ## 2. Find your team's machine
 
-The VM name is your **Team ID**:
+The VM name is your **Team ID**. Find your crsid below to get your machine:
 
-| Team | VM name | Team | VM name |
-|------|---------|------|---------|
-| aldimu | `aldimu` | dakolo | `dakolo` |
-| waxvhe | `waxvhe` | chfazhvi | `chfazhvi` |
-| begrla | `begrla` | ya | `ya-team` |
-| fugupf | `fugupf` | giab | `giab` |
-| fajizh | `fajizh` | chlina | `chlina` |
-| depexu | `depexu` | chmawa | `chmawa` |
-| hamcpaso | `hamcpaso` | | |
+| Team | VM name | Members (crsid) |
+|------|---------|-----------------|
+| aldimu | `aldimu` | cm2327, eja69, eid23 |
+| waxvhe | `waxvhe` | zw491, cx272, sh2396 |
+| begrla | `begrla` | fl482, bg492, hb747 |
+| fugupf | `fugupf` | anp50, qf226, bag36 |
+| fajizh | `fajizh` | yz2002, yf365, ezj20 |
+| depexu | `depexu` | zx332, tp534, yd388 |
+| chlina | `chlina` | zl656, un212, xc401 |
+| chmawa | `chmawa` | sm3035, bc654, zw499 |
+| hamcpaso | `hamcpaso` | tjh200, ep787, rs2398, cm2306 |
+| dakolo | `dakolo` | bk489, ol306, rd761 |
+| chfazhvi | `chfazhvi` | Nf425, sz519, nc680, iv294 |
+| ya | `ya-team` | yy617, py245, tg561 |
+| giab | `giab` | dg728, aa2730 |
 
 > Note: the `ya` team's machine is called **`ya-team`** (names must be ≥3 characters).
 
